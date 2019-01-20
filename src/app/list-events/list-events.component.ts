@@ -16,5 +16,8 @@ export class ListEventsComponent implements OnInit {
   ngOnInit() {
     this.events = this.eventServiceService.get();
   }
+  delete(id: number) {
+    this.eventServiceService.delete(id);
+  }
 
 }

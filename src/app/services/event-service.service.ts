@@ -5,10 +5,19 @@ import { EventModel } from 'src/app/models/event.model';
   providedIn: 'root'
 })
 export class EventServiceService {
+  eventList:EventModel[];
 
   constructor() { }
+       
   get(): EventModel[] {
-    const all = JSON.parse(localStorage.getItem('events'))
-     return all;
-}
+    this.eventList = JSON.parse(localStorage.getItem('events'));
+     return this.eventList;
+
+  }
+  
+  delete(id:number) {
+    this.eventList.splice(id, 1);
+    window.localStorage.setItem('events', JSON.stringify(this.eventList));
+   }
+
 }
